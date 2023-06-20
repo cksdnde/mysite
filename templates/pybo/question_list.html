@@ -34,7 +34,7 @@
             </td>
             <td class="text-start">
                 <a href="{% url 'pybo:detail' question.id %}">{{ question.subject }}</a>
-                {% if question.answer_set.count > 0 %}
+                 {% if question.answer_set.count > 0 %}
                 <span class="text-danger small mx-2">{{ question.answer_set.count }}</span>
                 {% endif %}
             </td>
@@ -55,7 +55,7 @@
         {% if question_list.has_previous %}
         <li class="page-item">
             <a class="page-link" data-page="{{ question_list.previous_page_number }}"
-            href="javascript:void(0)">이전</a>
+           href="javascript:void(0)">이전</a>
         </li>
         {% else %}
         <li class="page-item disabled">
@@ -68,7 +68,8 @@
         {% if page_number == question_list.number %}
         <li class="page-item active" aria-current="page">
             <a class="page-link" data-page="{{ page_number }}"
-           href="javascript:void(0)">{{ page_number }}</a></li>
+           href="javascript:void(0)">{{ page_number }}</a>
+        </li>
         {% else %}
         <li class="page-item">
             <a class="page-link" data-page="{{ page_number }}"
@@ -82,7 +83,6 @@
         <li class="page-item">
             <a class="page-link" data-page="{{ question_list.next_page_number }}"
            href="javascript:void(0)">다음</a>
-
         </li>
         {% else %}
         <li class="page-item disabled">
@@ -91,7 +91,7 @@
         {% endif %}
     </ul>
     <!-- 페이징처리 끝 -->
-
+    <a href="{% url 'pybo:question_create' %}" class="btn btn-primary">질문 등록하기</a>
 </div>
 <form id="searchForm" method="get" action="{% url 'index' %}">
     <input type="hidden" id="kw" name="kw" value="{{ kw|default_if_none:'' }}">
